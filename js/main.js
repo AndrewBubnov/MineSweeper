@@ -19,18 +19,30 @@ function mineSweeper(s) {
     let inputSize = document.createElement('input');
     inputSize.id = "inputSize";
     let label = document.createElement('p');
-    label.innerHTML = "You can change the field side size";
+    label.innerHTML = "You can change the field side size from 6 to 20 cells";
     container.parentNode.insertBefore(inputContainer, container.nextSibling);
     inputContainer.appendChild(label);
     inputContainer.appendChild(inputSize);
 
     inputSize.addEventListener('change', function (e) {
-        let s = +e.target.value;
+        let s = +e.target.value.match(/\d/g).join("");
         if (s < 6) s = 6;
         if (s > 20) s = 20;
         restartGame(s);
     });
 
+    inputSize.addEventListener('keyup', function (e) {
+        let number = +e.target.value.match(/\d/g).join("");
+        let flag = false;
+        if (number > 20) {
+            number = 20;
+            flag = true;
+        }
+        label.innerHTML = "The size of field you have selected is <br><span id = 'black'>" + number + "&#215;" + number + "</span>";
+        if (flag){
+            document.querySelector("#black").classList.add('black');
+        }
+    });
 
 
     let commonMinesNumber = Math.floor(size * size / 6);
