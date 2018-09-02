@@ -38,7 +38,8 @@ function mineSweeper(s) {
             number = 20;
             flag = true;
         }
-        label.innerHTML = "The size of field you have selected is <br><span id = 'black'>" + number + "&#215;" + number + "</span>";
+        label.innerHTML = "The size of field you have selected is <br><span id = 'black'>"
+            + number + "&#215;" + number + "</span>";
         if (flag){
             document.querySelector("#black").classList.add('black');
         }
@@ -181,7 +182,7 @@ function mineSweeper(s) {
                 " background-color: orange;" +
                 " border: none; font-size: 20px;" +
                 " color: #fff";
-            restart.innerHTML = "You win! Play again?";
+            restart.innerHTML = "You won! Play again?";
         }
     }
 
