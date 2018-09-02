@@ -28,11 +28,7 @@ function mineSweeper(s) {
         let s = +e.target.value;
         if (s < 6) s = 6;
         if (s > 20) s = 20;
-        inputContainer.remove();
-        container.remove();
-        if (restart !== undefined)restart.remove();
-        if (score !== undefined)score.remove();
-        mineSweeper(s);
+        restartGame(s);
     });
 
 
@@ -55,7 +51,8 @@ function mineSweeper(s) {
             minesPlacing(+currentCell.id);
             restart = document.createElement('div');
             restart.addEventListener('click', function () {
-                location.reload();
+                // location.reload();
+                restartGame(size);
             });
             announcement.appendChild(restart);
             restart.className = "restart";
@@ -183,6 +180,14 @@ function mineSweeper(s) {
             if (set.size === commonMinesNumber) break;
         }
         return set;
+    }
+
+    function restartGame(s) {
+        inputContainer.remove();
+        container.remove();
+        if (restart !== undefined)restart.remove();
+        if (score !== undefined)score.remove();
+        mineSweeper(s);
     }
 }
 
