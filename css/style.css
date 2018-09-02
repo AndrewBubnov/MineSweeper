@@ -82,3 +82,11 @@ input{
     width: 80px;
     height: 25px;
 }
+
+.mine-placed{
+    animation: placed .5s;
+}
+@keyframes placed {
+    from {transform: rotate(0deg);}
+    from {transform: rotate(-630deg);}
+}

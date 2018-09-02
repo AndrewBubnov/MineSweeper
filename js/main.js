@@ -74,7 +74,8 @@ function mineSweeper(s) {
             if (set.has(current)) {
                 for (let k of set.values()) {
                     cell[k].innerHTML = "<i class=\"fa fa-bomb\" aria-hidden=\"true\"></i>";
-                    cell[k].style.color = "#707070";
+                    cell[k].style.color = "#ff0000";
+                    cell[k].firstChild.classList.add('mine-placed');
                 }
                 container.removeEventListener('click', mainClick);
                 container.removeEventListener('contextmenu', addMine);
@@ -159,9 +160,10 @@ function mineSweeper(s) {
         if (mineCell.className === "cell" && mineCell.innerHTML === "") {
             mineCell.innerHTML = "<i class=\"fa fa-bomb\" aria-hidden=\"true\"></i>";
             mineCell.style.color = "#707070";
+            mineCell.firstChild.classList.add('mine-placed');
             score.textContent = "Mines found: " + counter + " / " + commonMinesNumber;
         } else mineCell.innerHTML = "";
-        if (mineCell.className === "fa fa-bomb") {
+        if (mineCell.className === "fa fa-bomb mine-placed") {
             mineCell.parentNode.innerHTML = "";
         }
         if (found.length === commonMinesNumber){
