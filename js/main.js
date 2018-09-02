@@ -172,7 +172,12 @@ function mineSweeper(s) {
             mineCell.style.color = "#707070";
             mineCell.firstChild.classList.add('mine-placed');
             score.textContent = "Mines found: " + counter + " / " + commonMinesNumber;
-        } else mineCell.innerHTML = "";
+        } else {
+            mineCell.innerHTML = "";
+            found.splice(found.indexOf(+mineCell.id), 1);
+            if (counter > 0) counter--;
+            score.textContent = "Mines found: " + counter + " / " + commonMinesNumber;
+        }
         if (mineCell.className === "fa fa-bomb mine-placed") {
             mineCell.parentNode.innerHTML = "";
         }
