@@ -87,6 +87,7 @@ function mineSweeper(s) {
             let current = +e.target.id;
             neighbours = getNeighbours(current);
             if (set.has(current)) {
+                clearTimeout(gameTimer);
                 for (let k of set.values()) {
                     cell[k].innerHTML = "<i class=\"fa fa-bomb\" aria-hidden=\"true\"></i>";
                     cell[k].style.color = "#ff0000";
@@ -176,13 +177,12 @@ function mineSweeper(s) {
             mineCell.innerHTML = "<i class=\"fa fa-bomb\" aria-hidden=\"true\"></i>";
             mineCell.style.color = "#707070";
             mineCell.firstChild.classList.add('mine-placed');
-            score.textContent = "Mines found: " + counter + " / " + commonMinesNumber;
         } else {
             mineCell.innerHTML = "";
             found.splice(found.indexOf(+mineCell.id), 1);
             if (counter > 0) counter--;
-            score.textContent = "Mines found: " + counter + " / " + commonMinesNumber;
         }
+        score.textContent = "Mines found: " + counter + " / " + commonMinesNumber;
         if (mineCell.className === "fa fa-bomb mine-placed") {
             mineCell.parentNode.innerHTML = "";
         }
