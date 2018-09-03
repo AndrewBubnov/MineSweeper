@@ -18,11 +18,11 @@ body{
     align-items: center;
     color: #a0a0a0;
     font-family: sans-serif;
-
+    font-size: 25px;
 }
 .restart{
-    width: 150px;
-    height: 50px;
+    width: 120px;
+    height: 40px;
     border: 2px solid #a0a0a0;
     border-radius: 5px;
     display: flex;
@@ -30,15 +30,20 @@ body{
     align-items: center;
     cursor: pointer;
     transition: all .5s;
-    font-size: 30px;
 }
-.score{
-    width: 280px;
-    height: 50px;
+.clock{
+    width: 120px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+}
+.score{
+    width: 230px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container{
     width: 500px;
@@ -66,6 +71,13 @@ body{
     background-color: #008000;
     color: #ffffff;
     border: #008000;
+}
+.orange-button{
+    width: 240px;
+    background-color: orange;
+    border: none;
+    font-size: 20px;
+    color: #fff;
 }
 #inputContainer{
     width: 500px;

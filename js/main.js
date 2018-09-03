@@ -53,6 +53,7 @@ function mineSweeper(s) {
     let counter = 0;
     let restart;
     let score;
+    let clock;
     let found = [];
 
     container.addEventListener('click', mainClick);
@@ -70,6 +71,10 @@ function mineSweeper(s) {
             announcement.appendChild(restart);
             restart.className = "restart";
             restart.innerHTML = "Restart";
+            clock = document.createElement('div');
+            announcement.appendChild(clock);
+            clock.className = "clock";
+            timer();
             score = document.createElement('div');
             container.addEventListener('contextmenu', addMine);
             announcement.appendChild(score);
@@ -182,12 +187,14 @@ function mineSweeper(s) {
             mineCell.parentNode.innerHTML = "";
         }
         if (found.length === commonMinesNumber){
-            restart.innerHTML = "";
-            restart.style.cssText = "width: 240px;" +
-                " background-color: orange;" +
-                " border: none; font-size: 20px;" +
-                " color: #fff";
-            restart.innerHTML = "You won! Play again?";
+            clearTimeout(gameTimer);
+            clock.style.color = "orange";
+            score.remove();
+            restart.classList.add('orange-button');
+            setTimeout(function () {
+                restart.textContent = "You won! Play again?";
+            }, 150);
+
         }
     }
 
@@ -203,9 +210,29 @@ function mineSweeper(s) {
     function restartGame(s) {
         inputContainer.remove();
         container.remove();
-        if (restart !== undefined)restart.remove();
-        if (score !== undefined)score.remove();
+        if (restart !== undefined) restart.remove();
+        if (clock !== undefined) clock.remove();
+        if (score !== undefined) score.remove();
         mineSweeper(s);
+    }
+let second = 0;
+let minute = 0;
+let gameTimer;
+    function timer() {
+        if (second < 3600) {
+            second++;
+            if (s > 60){
+                minute++;
+                second = 0;
+            }
+            clock.innerHTML = beautify(minute) + ":" + beautify(second);
+            gameTimer = setTimeout(timer, 1000);
+        }
+    }
+
+    function beautify(time){
+        if (time < 10) time = "0" + time;
+        return time;
     }
 }
 
