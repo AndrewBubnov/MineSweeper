@@ -81,7 +81,7 @@ body{
 }
 #inputContainer{
     width: 500px;
-    height: 100px;
+    height: 120px;
     font-size: 20px;
     font-family: sans-serif;
     color: #a0a0a0;
@@ -96,6 +96,8 @@ body{
 input{
     width: 80px;
     height: 25px;
+    color: #a0a0a0;
+    font-size: 20px;
 }
 input:focus{
     outline: 1px solid #a0a0a0;

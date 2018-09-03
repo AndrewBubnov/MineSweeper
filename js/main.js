@@ -49,7 +49,6 @@ function mineSweeper(s) {
     let commonMinesNumber = Math.floor(size * size / 6);
     let set = new Set;
     let cell = container.getElementsByClassName('cell');
-
     let counter = 0;
     let restart;
     let score;
