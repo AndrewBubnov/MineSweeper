@@ -220,7 +220,7 @@ let gameTimer;
     function timer() {
         if (second < 3600) {
             second++;
-            if (s > 60){
+            if (second > 59){
                 minute++;
                 second = 0;
             }
